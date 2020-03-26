@@ -43,9 +43,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
+#include "stdio.h"
+#include "string.h"
 
 /* Private define ------------------------------------------------------------*/
 
