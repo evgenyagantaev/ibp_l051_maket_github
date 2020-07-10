@@ -158,7 +158,7 @@ int main(void)
 			    usart_buffer_index = 0;
                                                                                                                                
 			    uint8_t channel_address = channel;
-                                                                                                                               
+
 			    if(on_off_flag)
 			    {
                                                                                                                                
