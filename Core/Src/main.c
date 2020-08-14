@@ -172,14 +172,14 @@ int main(void)
 			    	HAL_GPIO_WritePin(GPIOB, addr0_out_Pin|addr1_out_Pin|addr2_out_Pin 
                                             |addr3_out_Pin, GPIO_PIN_RESET);
                                                                                                                                
-			    	if(addr0)
-  			    		HAL_GPIO_WritePin(GPIOB, addr0_out_Pin, GPIO_PIN_SET);
-			    	if(addr1)
-  			    		HAL_GPIO_WritePin(GPIOB, addr1_out_Pin, GPIO_PIN_SET);
-			    	if(addr2)
-  			    		HAL_GPIO_WritePin(GPIOB, addr2_out_Pin, GPIO_PIN_SET);
-			    	if(addr3)
-  			    		HAL_GPIO_WritePin(GPIOB, addr3_out_Pin, GPIO_PIN_SET);
+					if(addr0)
+						HAL_GPIO_WritePin(GPIOB, addr0_out_Pin, GPIO_PIN_SET);
+					if(addr1)
+						HAL_GPIO_WritePin(GPIOB, addr1_out_Pin, GPIO_PIN_SET);
+					if(addr2)
+						HAL_GPIO_WritePin(GPIOB, addr2_out_Pin, GPIO_PIN_SET);
+					if(addr3)
+						HAL_GPIO_WritePin(GPIOB, addr3_out_Pin, GPIO_PIN_SET);
 
 
 					if(FORM == 0)
@@ -195,11 +195,13 @@ int main(void)
 						INCREMENT = ((double)NUMBER_OF_CHARGE_PULSES)/((double)CHOCK_LENGTH/2.0);
 					}
 
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET); // signal to hub "generation in progress"
 					chok_in_progress = 1;
     				TIM21->DIER |= TIM_DIER_UIE;
 					HAL_TIM_Base_Start(&htim21);
 
 					while(chok_in_progress);
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET); // signal to hub "ready state"
 
 
 			    }// end if(on_off_flag)
