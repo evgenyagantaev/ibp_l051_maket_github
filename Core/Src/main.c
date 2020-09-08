@@ -240,6 +240,11 @@ int main(void)
 					SysTick->CTRL &= ~SysTick_CTRL_TICKINT_Msk;
 				}
 			}
+			else if(usart_buffer[0] == 's' && usart_buffer[1] == 'm')
+			{
+				// podzhigaem dymovuyu shashku
+				HAL_GPIO_WritePin(GPIOA, aux_out_Pin, GPIO_PIN_SET);
+			}
 
 
 		}// end if(usart_string_received_flag)
